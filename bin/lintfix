@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -x
+bundle exec rufo lib fixings.gemspec
+bundle exec rubocop -a
