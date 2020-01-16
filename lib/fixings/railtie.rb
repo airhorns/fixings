@@ -77,7 +77,7 @@ module Fixings
         # Always log to stdout in development. Rails somehow magically makes this happen for the webserver but not for other processes
         # like the jobs server
         if SemanticLogger.appenders.all? { |appender| appender.instance_variable_get(:@log) != STDOUT }
-          pp.config.semantic_logger.add_appender(io: STDOUT, level: app.config.log_level, formatter: app.config.rails_semantic_logger.format)
+          app.config.semantic_logger.add_appender(io: STDOUT, level: app.config.log_level, formatter: app.config.rails_semantic_logger.format)
         end
       else
         # Use semantic_logger logging setup to log JSON to STDOUT

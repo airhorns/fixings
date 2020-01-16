@@ -73,6 +73,24 @@ end
 
 ```
 
+## JavaScript / TypeScript config
+
+We have those fixings too!
+
+Create `.eslintrc.js` in your project with this content:
+
+```json
+{
+    "extends": "@fixings/eslint-config"
+}
+```
+
+Create `.prettierrc.json` in your project with this content:
+
+```json
+"@fixings/prettier-config"
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
