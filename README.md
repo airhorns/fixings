@@ -25,7 +25,15 @@ inherit_gem:
     - .rubocop.yml
 ```
 
-And then set up the followings things in the app:
+Fixings also couples tightly to the middleware structure to set request logging up properly. This requires `ActionDispatch::Session::CacheStore` and `ActionDispatch::Static` to be in the middleware stack. For a fresh Rails app, this isn't the case because of the session store. As of now, Fixings requires you use the `CacheStore` for your sessions, which is generally better than cookies for a production app anyways.
+
+To use cache store, replace the contents of `config/initializers/session_store.rb` with
+
+```ruby
+# frozen_string_literal: true
+# Be sure to restart your server when you modify this file.
+Rails.application.config.session_store(:cache_store, key: "spellcheck_#{Rails.env.to_s}_sessions")
+```
 
 #### Sentry (via sentry-raven)
 
@@ -73,11 +81,68 @@ end
 
 ```
 
+
+#### Routes and Engine Mounts
+
+Mount the various engines que brings along with it:
+
+```ruby
+Rails.application.routes.draw do
+  # ...
+
+  health_check_routes  # added by the health check gem included by fixings
+  mount Flipper::UI.app(Flipper) => "/flipper"  # useful for administering beta flags powered by flipper
+end
+```
+
+A more complicated setup might look like this with a host constraint:
+
+```ruby
+Rails.application.routes.draw do
+  health_check_routes
+
+  constraints host: Rails.configuration.x.domains.admin do
+    constraints AdminAuthConstraint.new do
+      mount Que::Web, at: "/que"
+      mount Flipper::UI.app(Flipper) => "/flipper"
+    end
+
+    mount Trestle::Engine => Trestle.config.path
+  end
+
+  # ...
+end
+```
+
+## Rubocop Config
+
+Getcher lint-y fixin's for Ruby code by putting this in `.rubocop.yml`:
+
+```yaml
+AllCops:
+  Exclude:
+    - "bin/**/*"
+    - "vendor/**/*"
+    - "node_modules/**/*"
+    - "test/scratch/**/*"
+  TargetRubyVersion: 2.7
+
+inherit_gem:
+  fixings:
+    - .rubocop.yml
+```
+
 ## JavaScript / TypeScript config
 
 We have those fixings too!
 
-Create `.eslintrc.js` in your project with this content:
+Add the required packages:
+
+```
+yarn add --dev @fixings/prettier-config @fixings/eslint-config
+```
+
+Create `.eslintrc.json` in your project with this content:
 
 ```json
 {
