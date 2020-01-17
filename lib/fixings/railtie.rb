@@ -79,6 +79,8 @@ module Fixings
         if SemanticLogger.appenders.all? { |appender| appender.instance_variable_get(:@log) != STDOUT }
           app.config.semantic_logger.add_appender(io: STDOUT, level: app.config.log_level, formatter: app.config.rails_semantic_logger.format)
         end
+      elsif Rails.env.test?
+        # Do nothing, leave appending to test.log file in place
       else
         # Use semantic_logger logging setup to log JSON to STDOUT
         app.config.rails_semantic_logger.add_file_appender = false
