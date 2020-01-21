@@ -7,6 +7,8 @@ PATH
       ar_transaction_changes
       bcrypt
       bullet
+      factory_bot
+      factory_bot_rails
       flipper
       flipper-active_record
       flipper-active_support_cache_store
@@ -109,6 +111,11 @@ GEM
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
     erubi (1.9.0)
+    factory_bot (5.1.1)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.1.1)
+      factory_bot (~> 5.1.0)
+      railties (>= 4.2.0)
     faraday (0.17.3)
       multipart-post (>= 1.2, < 3)
     flipper (0.17.2)

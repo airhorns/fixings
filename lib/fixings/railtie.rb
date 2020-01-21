@@ -22,6 +22,7 @@ if !Rails.env.production?
   require "bullet"
   require "letter_opener"
   require "letter_opener_web"
+  require "factory_bot_rails"
 end
 
 module Fixings

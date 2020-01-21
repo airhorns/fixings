@@ -54,6 +54,8 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "timecop"
   spec.add_runtime_dependency "vcr"
   spec.add_runtime_dependency "webmock"
+  spec.add_runtime_dependency "factory_bot"
+  spec.add_runtime_dependency "factory_bot_rails"
 
   spec.add_runtime_dependency "sentry-raven"
 end
