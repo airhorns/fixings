@@ -91,9 +91,9 @@ module Fixings
     end
 
     initializer "fixings.configure_logging_middleware" do |app|
-      app.config.log_tags ||= {}
-      app.config.log_tags[:request_id] = :request_id
-      app.config.log_tags[:client_session_id] = ->(request) { request.headers["X-Client-Session-Id"] }
+      app.config.log_tags ||= {
+        request_id: :request_id,
+      }
 
       # Make sure that the semantic logger middleware which evaluats the above log_tags procs has a session on the request
       app.middleware.move_after ActionDispatch::Session::CacheStore, RailsSemanticLogger::Rack::Logger, app.config.log_tags
