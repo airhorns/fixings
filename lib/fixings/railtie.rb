@@ -16,6 +16,7 @@ require "sentry-raven"
 
 require "fixings/app_release"
 require "fixings/silent_log_middleware"
+require "fixings/trestle_admin_auth_constraint"
 
 if !Rails.env.production?
   require "annotate"
