@@ -94,6 +94,7 @@ module Fixings
     initializer "fixings.configure_logging_middleware" do |app|
       app.config.log_tags ||= {
         request_id: :request_id,
+        session_id: ->(request) { request.session.id.to_s },
       }
 
       # Make sure that the semantic logger middleware which evaluats the above log_tags procs has a session on the request
