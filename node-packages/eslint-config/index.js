@@ -3,7 +3,7 @@ module.exports = {
   parserOptions: {
     project: "./tsconfig.json"
   },
-  plugins: ["@typescript-eslint", "react-hooks", "lodash"],
+  plugins: ["@typescript-eslint", "react-hooks", "lodash", "tree-shaking"],
   extends: [
     "plugin:@typescript-eslint/recommended",
     "prettier",
@@ -33,7 +33,8 @@ module.exports = {
     "lodash/prefer-get": "off",
     "lodash/prefer-set": "off",
     "lodash/prefer-lodash-typecheck": "off",
-    "lodash/matches-prop-shorthand": "warn"
+    "lodash/matches-prop-shorthand": "warn",
+    "tree-shaking/no-side-effects-in-initialization": "warn"
   },
   settings: {
     react: {
