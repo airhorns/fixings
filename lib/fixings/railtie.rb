@@ -11,7 +11,6 @@ require "oj"
 require "bcrypt"
 require "rails-middleware-extensions"
 require "rails_semantic_logger"
-require "rack/cors"
 require "sentry-raven"
 
 require "fixings/app_release"
@@ -40,11 +39,6 @@ module Fixings
       if Rails.env.development?
         ActiveRecordQueryTrace.colorize = :light_purple
         ActiveRecordQueryTrace.enabled = ENV["TRACE_QUERIES"].present?
-      end
-    end
-
-    initializer "fixings.configure_rack_cors_middleware" do |app|
-      app.middleware.insert_before 0, Rack::Cors do
       end
     end
 

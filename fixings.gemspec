@@ -37,7 +37,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "letter_opener_web"
   spec.add_runtime_dependency "marginalia"
   spec.add_runtime_dependency "oj"
-  spec.add_runtime_dependency "rack-cors"
   spec.add_runtime_dependency "rails", "~> 6.0"
   spec.add_runtime_dependency "rails-middleware-extensions"
   spec.add_runtime_dependency "rails_semantic_logger"

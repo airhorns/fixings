@@ -21,7 +21,6 @@ PATH
       minitest-snapshots
       mocha
       oj
-      rack-cors
       rails (~> 6.0)
       rails-middleware-extensions
       rails_semantic_logger
@@ -175,8 +174,6 @@ GEM
       ast (~> 2.4.0)
     public_suffix (4.0.3)
     rack (2.1.1)
-    rack-cors (1.1.1)
-      rack (>= 2.0.0)
     rack-protection (2.0.8.1)
       rack
     rack-test (1.1.0)
