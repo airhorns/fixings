@@ -47,14 +47,14 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "rubocop-rails"
   spec.add_runtime_dependency "rufo"
 
+  spec.add_runtime_dependency "factory_bot"
+  spec.add_runtime_dependency "factory_bot_rails"
   spec.add_runtime_dependency "minitest-ci"
   spec.add_runtime_dependency "minitest-snapshots"
   spec.add_runtime_dependency "mocha"
   spec.add_runtime_dependency "timecop"
   spec.add_runtime_dependency "vcr"
   spec.add_runtime_dependency "webmock"
-  spec.add_runtime_dependency "factory_bot"
-  spec.add_runtime_dependency "factory_bot_rails"
 
   spec.add_runtime_dependency "sentry-raven"
 end
