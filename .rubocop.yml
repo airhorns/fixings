@@ -82,13 +82,13 @@ Style/GuardClause:
   Enabled: false
 
 Style/Documentation:
-  Enabled: false
+  Enabled: true
+  Severity: warning
   Exclude:
     - spec/**/*
     - test/**/*
     - db/**/*
-    - app/graphql/types/**/*
-    - app/graphql/mutations/**/*
+    - app/graphql/**/*
     - app/helpers/**/*
     - app/jobs/**/*
 
@@ -99,6 +99,9 @@ Style/DoubleNegation:
   Enabled: false
 
 Style/NegatedIf:
+  Enabled: false
+
+Style/Next:
   Enabled: false
 
 Style/TrailingUnderscoreVariable:
