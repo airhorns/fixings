@@ -54,9 +54,6 @@ Style/TrailingCommaInHashLiteral:
 Style/TrailingCommaInArguments:
   Enabled: false
 
-Style/ClassAndModuleChildren:
-  Enabled: false
-
 Style/HashSyntax:
   Enabled: false
 
@@ -121,3 +118,10 @@ Style/NumericPredicate:
 
 Rails/FilePath:
   Enabled: false
+
+# For Rails' autoloading, the nested module::class style triggers autoloading of the module, which is necessary in some instances.
+Style/ClassAndModuleChildren:
+  Enabled: true
+  Include:
+    - test/**/*
+  EnforcedStyle: compact
